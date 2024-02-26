@@ -1,7 +1,9 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {FC} from 'react';
 
-const CustomModal = () => {
+type CustomModalProps = {};
+
+const CustomModal: FC<CustomModalProps> = () => {
   return (
     <View>
       <Text>CustomModal</Text>

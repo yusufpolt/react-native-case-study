@@ -1,14 +1,22 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {StyleSheet, Text, TextProps, View, ViewStyle} from 'react-native';
+import React, {FC} from 'react';
 
-const Paragraph = () => {
+type ParagraphProps = TextProps & {
+  customStyle?: ViewStyle;
+};
+
+const Paragraph: FC<ParagraphProps> = ({children, customStyle, ...props}) => {
   return (
-    <View>
-      <Text>Paragraph</Text>
-    </View>
+    <Text style={StyleSheet.compose(styles.text, customStyle)} {...props}>
+      {children}
+    </Text>
   );
 };
 
 export default Paragraph;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  text: {
+    fontFamily: 'Montserrat',
+  },
+});

@@ -1,13 +1,30 @@
-import {StyleSheet, Text, TextProps, View, ViewStyle} from 'react-native';
+import {StyleSheet, Text, TextProps, TextStyle, View, ViewStyle} from 'react-native';
 import React, {FC} from 'react';
+import {Colors} from '../../constants';
 
 type ParagraphProps = TextProps & {
-  customStyle?: ViewStyle;
+  customStyle?: TextStyle;
+  color?: string;
+  weight?: any;
+  size?: string | any;
 };
 
-const Paragraph: FC<ParagraphProps> = ({children, customStyle, ...props}) => {
+const Paragraph: FC<ParagraphProps> = ({
+  children,
+  color = Colors.text,
+  weight,
+  size,
+  customStyle,
+  ...props
+}) => {
   return (
-    <Text style={StyleSheet.compose(styles.text, customStyle)} {...props}>
+    <Text
+      style={[
+        styles.text,
+        customStyle,
+        {color: color, fontWeight: weight, fontSize: size},
+      ]}
+      {...props}>
       {children}
     </Text>
   );

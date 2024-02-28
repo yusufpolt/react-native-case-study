@@ -3,7 +3,7 @@ import {StyleSheet, View, ViewStyle} from 'react-native';
 
 type VStackProps = {
   children: React.ReactNode;
-  customStyle: ViewStyle;
+  customStyle?: ViewStyle;
 };
 
 const VStack: FC<VStackProps> = ({children, customStyle}) => {

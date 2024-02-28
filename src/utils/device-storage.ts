@@ -1,31 +1,20 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {MMKV} from 'react-native-mmkv';
+
+const mmkv = new MMKV();
 
 const deviceStorage = {
-  // Yerel depolama işlevleri
-  async saveItem(key: string, value: string) {
-    try {
-      await AsyncStorage.setItem(key, value);
-    } catch (error: string | any) {
-      console.error('AsyncStorage Hatası: ', error.message);
-    }
+  setItem: (key: string, value: string) => {
+    mmkv.set(key, value);
   },
-
-  async getItem(key: any) {
-    try {
-      const value = await AsyncStorage.getItem(key);
-      return value;
-    } catch (error: string | any) {
-      console.error('AsyncStorage Hatası: ', error.message);
-      return null;
-    }
+  getItem: (key: string) => {
+    const value = mmkv.getString(key);
+    return value;
   },
-
-  async removeItem(key: string) {
-    try {
-      await AsyncStorage.removeItem(key);
-    } catch (error: string | any) {
-      console.error('AsyncStorage Hatası: ', error.message);
-    }
+  removeItem: (key: string) => {
+    mmkv.delete(key);
+  },
+  setMultipleItem: (key: string, item: any) => {
+    mmkv.set(key, item);
   },
 };
 

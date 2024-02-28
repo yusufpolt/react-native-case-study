@@ -10,7 +10,7 @@ import React, {FC} from 'react';
 import {Colors} from '../../constants';
 
 type ButtonProps = TouchableOpacityProps & {
-  loading: boolean;
+  loading?: boolean;
 };
 
 const Button: FC<ButtonProps> = ({children, loading, ...props}) => {

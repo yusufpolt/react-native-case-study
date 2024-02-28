@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-
-const instance = axios.create({
-//   baseURL: BASE_API_URL,
+const axiosInstance = axios.create({
+  baseURL: process.env.BASE_URL,
   timeout: 15000,
   headers: {
     'Access-Control-Allow-Origin': '*',
@@ -10,13 +9,13 @@ const instance = axios.create({
   },
 });
 
-instance.interceptors.request.use(function (config) {
+axiosInstance.interceptors.request.use(function (config) {
   return config;
 });
 
-export default instance;
+export default axiosInstance;
 
-instance.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   (response: any) => {
     return response;
   },
